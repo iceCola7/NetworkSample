@@ -6,11 +6,11 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.cxz.network.library.NetworkManager;
-import com.cxz.network.library.listener.NetChangeObserver;
+import com.cxz.network.library.annotation.Network;
 import com.cxz.network.library.type.NetType;
 import com.cxz.network.library.utils.Constants;
 
-public class MainActivity extends AppCompatActivity implements NetChangeObserver {
+public class MainActivity extends AppCompatActivity {
 
     TextView tvState;
 
@@ -21,20 +21,34 @@ public class MainActivity extends AppCompatActivity implements NetChangeObserver
 
         tvState = findViewById(R.id.tv_state);
 
-        NetworkManager.getDefault().init(getApplication());
-        NetworkManager.getDefault().setListener(this);
+        NetworkManager.getDefault().registerObserver(this);
 
     }
 
-    @Override
-    public void onConnect(NetType type) {
-        Log.e(Constants.LOG_TAG, "连接了" + type.name());
-        tvState.setText("连接了" + type.name());
+    @Network(netType = NetType.AUTO)
+    public void network(NetType netType) {
+        tvState.setText(netType.name());
+        switch (netType) {
+            case WIFI:
+                Log.e(Constants.LOG_TAG, "WIFI");
+                break;
+            case CMNET:
+            case CMWAP:
+                // 有网络
+                Log.e(Constants.LOG_TAG, "有网络");
+                break;
+
+            case NONE:
+                // 没有网络，提示用户跳转到设置
+                Log.e(Constants.LOG_TAG, "没有网络");
+                break;
+        }
     }
 
     @Override
-    public void onDisConnect() {
-        Log.e(Constants.LOG_TAG, "没有网络");
-        tvState.setText("没有网络");
+    protected void onDestroy() {
+        super.onDestroy();
+        NetworkManager.getDefault().unRegisterObserver(this);
+        NetworkManager.getDefault().unRegisterAllObserver();
     }
 }

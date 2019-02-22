@@ -47,7 +47,29 @@ public class NetworkManager {
         application.registerReceiver(receiver, filter);
     }
 
-    public void setListener(NetChangeObserver listener) {
-        receiver.setListener(listener);
+//    public void setListener(NetChangeObserver listener) {
+//        receiver.setListener(listener);
+//    }
+
+    /**
+     * 注册
+     */
+    public void registerObserver(Object register) {
+        receiver.registerObserver(register);
     }
+
+    /**
+     * 移除
+     */
+    public void unRegisterObserver(Object register) {
+        receiver.unRegisterObserver(register);
+    }
+
+    /**
+     * 移除所有
+     */
+    public void unRegisterAllObserver() {
+        receiver.unRegisterAllObserver();
+    }
+
 }

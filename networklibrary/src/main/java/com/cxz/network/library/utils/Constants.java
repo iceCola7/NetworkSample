@@ -8,11 +8,6 @@ package com.cxz.network.library.utils;
 public class Constants {
 
     /**
-     * Log 日志 Tag 日志前缀名
-     */
-    public static final String LOG_TAG = "cxz----->>";
-
-    /**
      * 系统网络改变广播
      */
     public static final String ANDROID_NET_CHANGE_ACTION = "android.net.conn.CONNECTIVITY_CHANGE";

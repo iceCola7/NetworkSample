@@ -3,13 +3,12 @@ package com.cxz.network.library;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.cxz.network.library.annotation.Network;
 import com.cxz.network.library.bean.MethodManager;
-import com.cxz.network.library.listener.NetChangeObserver;
 import com.cxz.network.library.type.NetType;
 import com.cxz.network.library.utils.Constants;
+import com.cxz.network.library.utils.LogUtils;
 import com.cxz.network.library.utils.NetworkUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -45,19 +44,19 @@ public class NetStateReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent == null || intent.getAction() == null) {
-            Log.e(Constants.LOG_TAG, "异常了");
+            LogUtils.e("异常了");
             return;
         }
 
         // 处理广播事件
         if (intent.getAction().equalsIgnoreCase(Constants.ANDROID_NET_CHANGE_ACTION)) {
-            Log.e(Constants.LOG_TAG, "网络发生改变");
+            LogUtils.e("网络发生改变");
             netType = NetworkUtils.getNetType(); // 网络类型
             if (NetworkUtils.isNetworkAvailable()) { // 网络连接了
-                Log.e(Constants.LOG_TAG, "网络连接成功");
+                LogUtils.e("网络连接成功");
                 // listener.onConnect(netType);
             } else {
-                Log.e(Constants.LOG_TAG, "没有网络连接");
+                LogUtils.e("没有网络连接");
                 // listener.onDisConnect();
             }
             // 通知所有注册的方法，网络发生了变化
@@ -172,7 +171,7 @@ public class NetStateReceiver extends BroadcastReceiver {
         if (!networkList.isEmpty()) {
             networkList.remove(register);
         }
-        Log.e(Constants.LOG_TAG, register.getClass().getName() + "注销成功");
+        LogUtils.e(register.getClass().getName() + "注销成功");
     }
 
     public void unRegisterAllObserver() {
@@ -181,6 +180,6 @@ public class NetStateReceiver extends BroadcastReceiver {
         }
         NetworkManager.getDefault().getApplication().unregisterReceiver(this);
         networkList = null;
-        Log.e(Constants.LOG_TAG, "注销全部成功");
+        LogUtils.e("注销全部成功");
     }
 }

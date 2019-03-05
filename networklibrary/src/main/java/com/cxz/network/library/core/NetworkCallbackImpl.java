@@ -5,9 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.os.Build;
-import android.util.Log;
 
-import com.cxz.network.library.utils.Constants;
+import com.cxz.network.library.utils.LogUtils;
 
 /**
  * @author chenxz
@@ -20,13 +19,13 @@ public class NetworkCallbackImpl extends ConnectivityManager.NetworkCallback {
     @Override
     public void onAvailable(Network network) {
         super.onAvailable(network);
-        Log.e(Constants.LOG_TAG, "网络已连接");
+        LogUtils.e("网络已连接");
     }
 
     @Override
     public void onLost(Network network) {
         super.onLost(network);
-        Log.e(Constants.LOG_TAG, "网络已中断");
+        LogUtils.e("网络已中断");
     }
 
     @Override
@@ -34,9 +33,9 @@ public class NetworkCallbackImpl extends ConnectivityManager.NetworkCallback {
         super.onCapabilitiesChanged(network, networkCapabilities);
         if (networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
             if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                Log.e(Constants.LOG_TAG, "网络发生改变，类型为 WIFI");
+                LogUtils.e("网络发生改变，类型为 WIFI");
             } else {
-                Log.e(Constants.LOG_TAG, "网络发生改变，类型为 其他");
+                LogUtils.e("网络发生改变，类型为 其他");
             }
         }
     }

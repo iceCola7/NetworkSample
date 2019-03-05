@@ -8,9 +8,10 @@ import android.widget.TextView;
 import com.cxz.network.library.NetworkManager;
 import com.cxz.network.library.annotation.Network;
 import com.cxz.network.library.type.NetType;
-import com.cxz.network.library.utils.Constants;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     TextView tvState;
 
@@ -30,17 +31,17 @@ public class MainActivity extends AppCompatActivity {
         tvState.setText(netType.name());
         switch (netType) {
             case WIFI:
-                Log.e(Constants.LOG_TAG, "WIFI");
+                Log.e(TAG, "WIFI");
                 break;
             case CMNET:
             case CMWAP:
                 // 有网络
-                Log.e(Constants.LOG_TAG, "有网络");
+                Log.e(TAG, "有网络");
                 break;
 
             case NONE:
                 // 没有网络，提示用户跳转到设置
-                Log.e(Constants.LOG_TAG, "没有网络");
+                Log.e(TAG, "没有网络");
                 break;
         }
     }

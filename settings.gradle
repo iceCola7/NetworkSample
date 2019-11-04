@@ -1,1 +1,1 @@
-include ':app', ':networklibrary'
+include ':app', ':networklibrary', ':networklib'

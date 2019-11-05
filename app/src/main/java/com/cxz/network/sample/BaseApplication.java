@@ -2,7 +2,7 @@ package com.cxz.network.sample;
 
 import android.app.Application;
 
-import com.cxz.network.library.NetworkManager;
+import com.cxz.networklib.NetworkManager;
 
 /**
  * @author chenxz

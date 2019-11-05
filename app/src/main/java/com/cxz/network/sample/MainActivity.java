@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.cxz.network.library.NetworkManager;
-import com.cxz.network.library.annotation.Network;
-import com.cxz.network.library.type.NetType;
+import com.cxz.networklib.NetworkManager;
+import com.cxz.networklib.annotation.Network;
+import com.cxz.networklib.type.NetType;
 
 public class MainActivity extends AppCompatActivity {
 

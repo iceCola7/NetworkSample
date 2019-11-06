@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 28
@@ -19,8 +20,22 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+publish {
+    repoName = 'maven'  // 仓库名，没有填写默认仓库是maven
+    userOrg = 'icecola7'  // bintray注册的用户名
+    groupId = 'com.cxz'  // implementation引用时的第1部分groupId
+    artifactId = 'networklib'  // implementation引用时的第2部分项目名
+    publishVersion = '1.0.0'  // implementation引用时的第3部分版本号
+    desc = 'Achieve mobile phone switching network monitoring.' // 项目描述
+    website = 'https://github.com/iceCola7/NetworkSample'  // github 托管地址
 }

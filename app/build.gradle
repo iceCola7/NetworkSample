@@ -27,6 +27,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // implementation project(':networklibrary')
-    implementation project(':networklib')
+    // implementation project(':networklib')
+    implementation 'com.cxz:networklib:1.0.0'
 
 }

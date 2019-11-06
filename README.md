@@ -1,10 +1,16 @@
 # NetworkSample
 
-采用 EventBus 原理实现 Android 网络状态变化监听
+采用 `EventBus` 原理实现 `Android` 网络状态变化监听
 
 ## 使用方式
 
-##### 第一步：在 Application 里对框架初始化
+##### 第一步：添加依赖
+
+```
+implementation 'com.cxz:networklib:1.0.0'
+```
+
+##### 第二步：在 Application 里对框架初始化
 
 ```
 public void onCreate() {
@@ -13,7 +19,7 @@ public void onCreate() {
 }
 ```
 
-##### 第二步：分别在 Activity 的 onCreate() 和 onDestroy() 里进行注册和反注册操作
+##### 第三步：分别在 Activity 的 onCreate() 和 onDestroy() 里进行注册和反注册操作
 
 ```
 protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,7 @@ protected void onDestroy() {
 }
 ```
 
-##### 第三步：编写带有注解的方法来接收监听结果
+##### 第四步：编写带有注解的方法来接收监听结果
 
 ```
 @Network(netType = NetType.AUTO)

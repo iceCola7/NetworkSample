@@ -8,10 +8,6 @@ public class LogUtils {
 
     private static boolean debug;
 
-    public static boolean isDebug() {
-        return debug;
-    }
-
     public static void setDebug(boolean debug) {
         LogUtils.debug = debug;
     }

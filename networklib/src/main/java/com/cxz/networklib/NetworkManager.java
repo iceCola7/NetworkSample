@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.IntentFilter;
 
 import com.cxz.networklib.utils.Constants;
+import com.cxz.networklib.utils.LogUtils;
 
 /**
  * @author chenxz
@@ -44,6 +45,10 @@ public class NetworkManager {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.ANDROID_NET_CHANGE_ACTION);
         application.registerReceiver(receiver, filter);
+    }
+
+    public void openDebug() {
+        LogUtils.setDebug(true);
     }
 
     /**
